@@ -38,6 +38,8 @@ playground.xcworkspace
 .build/
 .build_lin/
 
+/node_modules
+webroot/node_modules/
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
