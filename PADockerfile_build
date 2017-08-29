@@ -1,0 +1,18 @@
+FROM perfectlysoft/perfectassistant:3.1
+RUN apt-get -y update && apt-get install -y libpq-dev
+RUN apt-get -y update && apt-get install -y libxml2-dev
+# Perfect-COpenSSL-Linux.git-6363232962473472785/PADockerfile
+RUN apt-get -y update && apt-get install -y libssl-dev
+
+# Perfect-libcurl.git--5476003216611783849/PADockerfile
+RUN apt-get -y update && apt-get install -y libcurl4-openssl-dev
+
+# Perfect-libpq-linux.git-7439722612202575009/PADockerfile
+RUN apt-get -y update && apt-get install -y libpq-dev
+
+# Perfect-LinuxBridge.git--8321794205908281743/PADockerfile
+RUN apt-get -y update && apt-get install -y uuid-dev
+
+# Perfect-XML.git--7684676134535648747/PADockerfile
+RUN apt-get -y update && apt-get install -y libxml2-dev pkg-config
+RUN rm -rf /var/lib/apt/lists/*

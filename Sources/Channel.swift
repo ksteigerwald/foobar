@@ -8,6 +8,7 @@
 
 import Foundation
 import PerfectRedis
+import RxSwift
 
 class Channel {
     
@@ -21,10 +22,23 @@ class Channel {
     var subscriber:RedisClient?
     var publisher:RedisClient?
     
+    let helloSequence = Observable.from(["H","e","l","l","o"])
+    
     init() {
         setClient(client: .main)
         setClient(client: .publisher)
         setClient(client: .subscriber)
+        
+        _ = helloSequence.subscribe { event in
+            switch event {
+            case .next(let value):
+                print(value)
+            case .error(let error):
+                print(error)
+            case .completed:
+                print("completed")
+            }
+        }
     }
     
     func setClient(client: Clients) {
@@ -67,7 +81,6 @@ class Channel {
             let s:String = response.toString() ?? ""
             completion(s)
         }
-        
     }
     
     func pub(channel:String, message: String) {

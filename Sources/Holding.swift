@@ -14,7 +14,7 @@ class Holding: PostgresStORM {
     
     var id                :Int       = 0
     var coin_id           :Int       = 0
-    var target_allocation :Int       = 0
+    var target_allocation :Float     = 0.0
     var allocation        :Float     = 0.0
     
     // The name of the database table
@@ -27,7 +27,7 @@ class Holding: PostgresStORM {
         id                  = this.data["id"] as? Int                        ?? 0
         coin_id             = this.data["coin_id"] as? Int                   ?? 0
         allocation          = this.data["allocation"] as? Float              ?? 0.0
-        target_allocation   = this.data["target_allocation"] as? Int         ?? 0
+        target_allocation   = this.data["target_allocation"] as? Float       ?? 0.0
     }
     
     func all() -> [Holding] {
