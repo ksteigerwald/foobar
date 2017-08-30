@@ -70,3 +70,10 @@ class Coin: PostgresStORM {
     
 }
 
+extension PostgresStORM {
+    
+    func toJSON() throws -> String {
+        return try self.results.rows.map { return $0.data }.jsonEncodedString()
+    }
+    
+}

@@ -25,12 +25,18 @@ import PerfectRedis
 import Jobs
 import StORM
 import PostgresStORM
+import PerfectSession
 
 PostgresConnector.host		= "localhost"
 PostgresConnector.username	= "postgres"
 PostgresConnector.password	= "postgres"
 PostgresConnector.database	= "portfolio_development"
 PostgresConnector.port		= 5432
+
+SessionConfig.CORS.enabled = true
+SessionConfig.CORS.acceptableHostnames.append("http://localhost:8080")
+SessionConfig.CORS.maxAge = 60
+
 
 //let balance = Balance()
 

@@ -47,7 +47,22 @@ func makeRoutes() -> Routes {
             return EchoHandler()
         }).handleRequest(request: request, response: response)
     })
-	
+    
+    routes.add(method: .get, uri: "/api/v1/coins", handler: {
+        request, response in
+        
+        let coins = Coin()
+        var json = ""
+        do {
+            try coins.findAll()
+            try json = coins.toJSON() as! String
+        } catch {}
+        
+        response.setHeader(.contentType, value: "application/json")
+        response.appendBody(string: json)
+        response.completed()
+    }
+    )	
 	return routes
 }
 
